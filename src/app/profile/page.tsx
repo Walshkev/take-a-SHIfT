@@ -4,7 +4,8 @@ import { useUser } from "../../context/userContext";
 import { collection, doc, setDoc, getDocs } from "firebase/firestore";
 import { db } from "../services/firebase";
 import { useState, useEffect } from "react";
-import Plot from "react-plotly.js";
+import dynamic from "next/dynamic";
+const Plot = dynamic(() => import("react-plotly.js"), { ssr: false });
 import Link from "next/link";
 
 export default function ProfilePage() {
@@ -65,7 +66,6 @@ export default function ProfilePage() {
       // Only include one of hourlyIncome or annualIncome
       const updatedUser = {
         name: formData.name || "",
-      
         hourlyIncome: formData.hourlyIncome && !formData.annualIncome ? formData.hourlyIncome : "",
         annualIncome: formData.annualIncome && !formData.hourlyIncome ? formData.annualIncome : "",
         secondsPay: formData.hourlyIncome
@@ -76,7 +76,7 @@ export default function ProfilePage() {
         uid: user.uid,
         photoURL: user.photoURL || "",
         email: user.email 
-        };
+      };
       await setDoc(doc(collection(db, "users"), docId), updatedUser);
       await fetchUserData(docId);
     } catch (error) {
@@ -224,7 +224,7 @@ export default function ProfilePage() {
         <div style={{ marginTop: 8, fontWeight: "bold", fontSize: "1.2rem", textAlign: "center" }}>
           Total Pay (all logs): ${totalPay.toFixed(2)}
         </div>
-        <div style={{ width: "600px", height: "500px", margin: "40px auto" }}>
+        <div style={{ width: "600px", height: "500px", margin: "24px auto 8px auto" }}>
           <Plot
             data={[
               {
@@ -248,7 +248,7 @@ export default function ProfilePage() {
           <button
             style={{
               marginTop: "0px",
-              marginBottom: "12px",
+              marginBottom: "8px",
               padding: "12px 32px",
               fontSize: "1.1rem",
               borderRadius: "8px",
