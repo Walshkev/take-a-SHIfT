@@ -13,10 +13,13 @@
     "@emotion/styled": "^11.14.0",
     "@mui/icons-material": "^7.1.0",
     "@mui/material": "^7.1.0",
+    "@syncfusion/ej2-react-charts": "^29.2.8",
     "firebase": "^11.8.1",
     "next": "15.3.3",
+    "plotly.js": "^3.0.1",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-plotly.js": "^2.6.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
