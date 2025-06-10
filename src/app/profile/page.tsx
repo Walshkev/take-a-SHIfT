@@ -5,7 +5,8 @@ import { collection, doc, setDoc, getDocs } from "firebase/firestore";
 import { db } from "../services/firebase";
 import { useState, useEffect } from "react";
 import nextDynamic from "next/dynamic";
-const Plot = nextDynamic(() => import("react-plotly.js"), { ssr: false });
+import type { PlotParams } from "react-plotly.js";
+const Plot = nextDynamic<PlotParams>(() => import("react-plotly.js"), { ssr: false });
 import Link from "next/link";
 
 export default function ProfilePage() {
