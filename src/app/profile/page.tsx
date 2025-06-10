@@ -315,3 +315,4 @@ const styles = {
     marginTop: "16px",
   },
 };
+export const dynamic = "force-dynamic";
